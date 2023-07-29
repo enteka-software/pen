@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pen - Writing UI for Astro blogs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50">
+    <nav class="py-5">
+      <h1 class="text-center font-bold text-3xl">Pen</h1>
+    </nav>
+    <main>
+      <div class="max-w-5xl mx-auto px-5 md:w-1/2">
+        {% for message in get_flashed_messages(request) %}
+        <div
+          class="p-2 text-white w-full rounded mb-4 {{ 'bg-green-500' if message.category == 'success' else 'bg-red-500'}}"
+        >
+          {{ message.message }}
+        </div>
+        {% endfor %}
+      </div>
+      <form
+        action="/new"
+        method="post"
+        class="max-w-5xl mx-auto px-5 text-center flex flex-col md:w-1/2"
+      >
+        <div class="flex items-stretch mb-4 w-full space-x-4">
+          <input
+            type="text"
+            name="file_name"
+            id="file_name"
+            class="p-4 rounded shadow border border-gray-100 w-full"
+            required
+            placeholder="src/blog/hello-world.mdx"
+          />
+          <select
+            name="repo"
+            id="repo"
+            class="p-4 rounded shadow border border-gray-100"
+          >
+            {% for repo in repos %}
+            <option value="{{repo}}">{{repo}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <textarea
+          name="content"
+          id="content"
+          cols="30"
+          rows="15"
+          class="border border-gray-100 shadow rounded mb-4 p-4"
+          required
+        ></textarea>
+        <!-- <div class="editor"></div> -->
+        <button
+          type="submit"
+          class="text-center mx-auto rounded bg-orange-500 hover:bg-orange-600 text-white w-full py-3"
+        >
+          Create
+        </button>
+      </form>
+    </main>
+
+    <script>
+      //   import { Editor } from "@tiptap/core";
+      //   import StarterKit from "@tiptap/starter-kit";
+
+      window.addEventListener("load", () => {
+        populateContentWithMdx();
+        // setupTipTap();
+      });
+
+      //   const setupTipTap = () => {
+      //     new Editor({
+      //       element: document.querySelector(".element"),
+      //       extensions: [StarterKit],
+      //       content: "",
+      //     });
+      //   };
+
+      const populateContentWithMdx = () => {
+        const content = document.getElementById("content");
+        content.value = `---
+layout: Layout.astro
+title: "Amazing Title content"
+pubDate: "1 Aug 2023"
+description: "Content description"
+author: "Sam Newby"
+tags: ["astro"]
+---`;
+      };
+    </script>
+  </body>
+</html>
