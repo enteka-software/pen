@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "pen"
+version = "0.1.0"
+description = "Writing tool for Astro.js blogs"
+authors = ["Sam Newby"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.scripts]
+pen = "pen.main:app"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+typer = {extras = ["all"], version = "^0.9.0"}
+fastapi = {extras = ["all"], version = "^0.100.1"}
+pygithub = "^1.59.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
