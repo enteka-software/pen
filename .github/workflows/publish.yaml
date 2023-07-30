@@ -1,0 +1,22 @@
+name: Publish
+  
+on:
+  release:
+    types: [published]
+      
+jobs:
+  build-and-publish:
+    name: Build and publish to PyPi
+    runs-on: ubuntu-latest
+    outputs:
+      ecr-registry: ${{ steps.login-ecr.outputs.registry }}
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v3
+
+      - name: Build and publish to pypi
+        uses: JRubics/poetry-publish@v1.17
+        with:
+          python_version: "3.9.16"
+          pypi_token: ${{ secrets.PYPI_TOKEN }}
