@@ -10,7 +10,7 @@ readme = "README.md"
 pen = "pen.main:app"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.11"
 typer = {extras = ["all"], version = "^0.9.0"}
 fastapi = {extras = ["all"], version = "^0.100.1"}
 pygithub = "^1.59.0"
