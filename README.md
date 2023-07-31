@@ -2,6 +2,12 @@
 
 Pen is a CLI tool that allows you to run a local server to write and publish content for your Astro.js blogs.
 
+### Installation
+
+```
+pip install --user pen-writer
+```
+
 ### Setup
 
 Pen requires a GitHub Access Token to get write and commit your content to a repository.
