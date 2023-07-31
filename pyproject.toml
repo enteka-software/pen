@@ -7,7 +7,7 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.scripts]
-pen = "pen.main:app"
+pen = "pen_writer.main:app"
 
 [tool.poetry.dependencies]
 python = "^3.11"
