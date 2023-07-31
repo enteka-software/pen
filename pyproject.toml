@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pen-writer"
-version = "0.3.0"
+version = "0.3.1"
 description = "Writing tool for Astro.js blogs"
 authors = ["Sam Newby"]
 license = "MIT"
